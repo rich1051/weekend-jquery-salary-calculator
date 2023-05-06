@@ -1,10 +1,8 @@
 $(document).ready(onReady);
 function onReady() {
     console.log('TEST: jQuery is connected!');
-
     $('#submitButton').on('click', addToTable);
     $("#tableBody").on("click", '#delete-btn', removeTable);
-
 }
 
 let sal = 0
@@ -18,6 +16,7 @@ function addToTable(event) {
         let inputFive = $('#annualSalary').val();
             
         event.preventDefault();
+        
         $("#tableBody").append(`      
       <tr>
           <td>${inputOne}</td>
@@ -28,20 +27,11 @@ function addToTable(event) {
           <td><button id="delete-btn">DELETE</button></td
       </tr>
         `)
-        
-        let employee = {
-            firstName: inputOne,
-            lastName: inputTwo,
-            idNumber: inputThree,
-            jobTitle: inputFour,
-            annualSalary: parseFloat(inputFive)
-            };
-        
+
         sal = Number($('#annualSalary').val());
         sumTotal += sal;
-        console.log('TEST:', sumTotal);
-
-
+        console.log('TEST sum total:', sumTotal);
+        $('#totalMonthlyCost').append((sumTotal / 12));
 
         $('#firstName').val('');
         $('#lastName').val('');
@@ -53,9 +43,3 @@ function addToTable(event) {
 function removeTable(){
     $(this).parent().parent().remove();
 }
-
-// function sumSalary() {
-//     sal = ($('#annualSalary').val());
-//     sumTotal += sal;
-//     console.log(sumTotal);
-// }
