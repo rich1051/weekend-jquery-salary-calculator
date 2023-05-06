@@ -2,12 +2,13 @@ $(document).ready(onReady);
 function onReady() {
     console.log('TEST: jQuery is connected!');
 
-    let totalMonthlyCost = 0;
-
-    $('#submitButton').on('click', addToTable)
+    $('#submitButton').on('click', addToTable);
     $("#tableBody").on("click", '#delete-btn', removeTable);
 
 }
+
+let sal = 0
+let sumTotal = 0
 
 function addToTable(event) {
         let inputOne = $("#firstName").val();
@@ -36,23 +37,25 @@ function addToTable(event) {
             annualSalary: parseFloat(inputFive)
             };
         
-        // this calculates monthly cost of most recent salary only
-        totalMonthlyCost = employee.annualSalary / 12
+        sal = Number($('#annualSalary').val());
+        sumTotal += sal;
+        console.log('TEST:', sumTotal);
+
+
 
         $('#firstName').val('');
         $('#lastName').val('');
         $('#IDNumber').val('');
         $('#titleName').val(''); 
         $('#annualSalary').val('');
-
-    // // $('#firstName').append();
-    // // let lastName = $('#lastName').val();
-    // // let idNumber = $('#IDNumber').val();
-    // // let jobTitle = $('#titleName').val();
-    // // let annualSalary = $('#annualSalary').val();
-    // console.log('click!');
 }
 
 function removeTable(){
     $(this).parent().parent().remove();
 }
+
+// function sumSalary() {
+//     sal = ($('#annualSalary').val());
+//     sumTotal += sal;
+//     console.log(sumTotal);
+// }
