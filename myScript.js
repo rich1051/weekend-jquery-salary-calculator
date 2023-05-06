@@ -29,6 +29,12 @@ function addToTable(event) {
           <td><button id="delete-btn">DELETE</button></td
       </tr>
         `)
+        
+        $('#firstName').val('');
+        $('#lastName').val('');
+        $('#IDNumber').val('');
+        $('#titleName').val(''); 
+        $('#annualSalary').val('');
 
     // // $('#firstName').append();
     // // let lastName = $('#lastName').val();
