@@ -2,7 +2,6 @@ $(document).ready(onReady);
 function onReady() {
     console.log('TEST: jQuery is connected!');
 
-    let employeeList = [];
     let totalMonthlyCost = 0;
 
     $('#submitButton').on('click', addToTable)
@@ -16,7 +15,6 @@ function addToTable(event) {
         let inputThree = $('#IDNumber').val();
         let inputFour = $('#titleName').val();
         let inputFive = $('#annualSalary').val();
-        console.log(inputOne, inputTwo, inputThree, inputFour, inputFive);
             
         event.preventDefault();
         $("#tableBody").append(`      
@@ -30,6 +28,17 @@ function addToTable(event) {
       </tr>
         `)
         
+        let employee = {
+            firstName: inputOne,
+            lastName: inputTwo,
+            idNumber: inputThree,
+            jobTitle: inputFour,
+            annualSalary: parseFloat(inputFive)
+            };
+        
+        // this calculates monthly cost of most recent salary only
+        totalMonthlyCost = employee.annualSalary / 12
+
         $('#firstName').val('');
         $('#lastName').val('');
         $('#IDNumber').val('');
@@ -46,4 +55,4 @@ function addToTable(event) {
 
 function removeTable(){
     $(this).parent().parent().remove();
-    }
+}
