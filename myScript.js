@@ -31,7 +31,13 @@ function addToTable(event) {
         sal = Number($('#annualSalary').val());
         sumTotal += sal;
         console.log('TEST sum total:', sumTotal);
-        $('#totalMonthlyCost').append((sumTotal / 12));
+        $('#totalMonthlyCost').html((sumTotal / 12));
+        if ((sumTotal / 12) > 20000) {
+            $('#totalMonthlyCost').css("background-color", "red");
+        }
+        else {
+            $('#totalMonthlyCost').css("background-color", "white");
+        }
 
         $('#firstName').val('');
         $('#lastName').val('');
